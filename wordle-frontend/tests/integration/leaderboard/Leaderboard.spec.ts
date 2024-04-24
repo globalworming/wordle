@@ -8,7 +8,7 @@ import givenSignInSuccessful from "../../step/given/givenSignInSuccessful";
 test.describe("Leaderboard",  async () => {
 
   test.describe("what we should see",  async () => {
-    test('the full leaderboard', async ({ page }) => {
+    test.only('the full leaderboard', async ({ page }) => {
       await givenDefaultHttpMock(page)
       await givenSignInSuccessful(page)
       await openLeaderboard(page)
