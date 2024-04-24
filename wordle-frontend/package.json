@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test-e2e": "npx playwright test",
+    "test-e2e": "DEBUG=pw:webserver npx playwright test --project chromium",
     "test-e2e-ci": "CI=true DEBUG=pw:webserver npx playwright test",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
