@@ -1,7 +1,7 @@
 import {test} from "@playwright/test";
 
-async function givenSignInSucceeds(page) {
-    await page.route('**/auth/login', async route => {
+export async function givenSignInSucceeds(page) {
+    await page.route('**/api/auth/login', async route => {
         if (route.request().postData() === '{"username":"globalworming","password":"globalworming"}') {
             await route.fulfill({
                 json: {
@@ -14,7 +14,7 @@ async function givenSignInSucceeds(page) {
 }
 
 export async function givenSignFailsBecauseTokenExpired(page) {
-    await page.route('**/auth/login', async route => {
+    await page.route('**/api/auth/login', async route => {
         if (route.request().postData() === '{"username":"token","password":"token"}') {
             await route.fulfill({
                 json: {
@@ -26,10 +26,93 @@ export async function givenSignFailsBecauseTokenExpired(page) {
     });
 }
 
-const givenDefaultHttpMock = async page => {
+async function givenCreateFirstGameSucceeds(page) {
+    await page.route('**/api/game', async route => {
+        await route.fulfill({
+            body: "1"
+        });
+    });
+}
+
+async function givenFullLeaderboard(page) {
+    await page.route('**/api/game/leaderboard?size=10', async route => {
+        await route.fulfill({
+            json: [
+                {
+                    "name": "a",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "b",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "c",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "d",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "e",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "f",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "g",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "h",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "i",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "j",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+                {
+                    "name": "k",
+                    "countryName": "Australia",
+                    "totalTries": 0,
+                    "successRate": 0
+                },
+            ]
+        });
+    });
+}
+
+export default  async page => {
     await test.step('setup default mock webserver', async () => {
         await givenSignInSucceeds(page);
+        await givenCreateFirstGameSucceeds(page);
+        await givenFullLeaderboard(page);
     });
 };
-
-export default givenDefaultHttpMock
