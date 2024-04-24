@@ -39,7 +39,7 @@ class AccountApi {
 
         const currrentTime = Date.now() / 1000;
 
-        if (decodedToken.expires < currrentTime) {
+        if (decodedToken.exp < currrentTime) {
           // Token has expired
           reject(new Error('Token expired'));
         } else {
