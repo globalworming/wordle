@@ -1,5 +1,5 @@
 import {test} from "@playwright/test";
-import fullLeaderboardBody from 'body/fullLeaderboardBody.json' assert { type: 'json' }
+import fullLeaderboardBody from './body/fullLeaderboardBody.json' assert { type: 'json' }
 
 export async function givenSignInSucceeds(page) {
     await page.route('**/api/auth/login', async route => {

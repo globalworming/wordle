@@ -1,7 +1,7 @@
 import {expect, Page, test} from '@playwright/test';
 import form from "../../page/signin/form";
 import goToApp from "../../step/goToApp";
-import givenDefaultHttpMock, {givenSignFailsBecauseTokenExpired} from "../../step/given/givenDefaultHttpMocks";
+import givenDefaultHttpMock, {givenSignFailsBecauseTokenExpired} from "../../step/given/httpMocks/givenDefaultHttpMocks";
 
 test.describe("Sign In",  async () => {
   test.describe("what we should see",  async () => {

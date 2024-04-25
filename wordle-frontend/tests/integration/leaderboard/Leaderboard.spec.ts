@@ -1,7 +1,5 @@
-import {expect, Page, test} from '@playwright/test';
-import form from "../../page/signin/form";
-import goToApp from "../../step/goToApp";
-import givenDefaultHttpMock, {givenSignFailsBecauseTokenExpired} from "../../step/given/givenDefaultHttpMocks";
+import {test} from '@playwright/test';
+import givenDefaultHttpMock from "../../step/given/httpMocks/givenDefaultHttpMocks";
 import openLeaderboard from "../../step/openLeaderboard";
 import givenSignInSuccessful from "../../step/given/givenSignInSuccessful";
 

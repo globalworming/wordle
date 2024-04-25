@@ -1,6 +1,6 @@
 import {test} from "@playwright/test";
 import goToApp from "../goToApp";
-import {givenSignInSucceeds} from "./givenDefaultHttpMocks";
+import {givenSignInSucceeds} from "./httpMocks/givenDefaultHttpMocks";
 
 
 export default async page => {
